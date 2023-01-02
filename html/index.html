@@ -14,16 +14,15 @@
     </head>
     <body>
         <h1>THE FFF GAME</h1>
-            <section>
+            <section id="game">
                 <p id="try">PRESS TO TRY</p>
-                <article>
-                    <p class="instructions" id="upArrow">Press UpArrow to throw the fishing rod</p>
-                    <h2 class="instructions" id="space">SPACE TO START</h2>
-                    <p class="instructions" id="downArrow">Press DownArrow to take out the fishing rod</p>
-                </article>
-                <script src="../scripts/start.js"></script>
-                <script src="../scripts/game.js"></script>
-                <script src="../scripts/swordfish.js"></script>
+                <div><p class="instructions">Press UpArrow to throw the fishing rod</p></div>
+                <div><p class="instructions" id="space">SPACE TO START<p></p></div>
+                <div><p class="instructions" id="downArrow">Press DownArrow to take out the fishing rod</p></div>
             </section>
+            <script src="../scripts/start.js"></script>
+            <script src="../scripts/miniGame.js"></script>
+            <script src="../scripts/swordfishAnimation.js"></script>
+            <script src="../scripts/goToStart.js"></script>
     </body>
 </html>

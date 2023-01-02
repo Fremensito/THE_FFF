@@ -1,11 +1,11 @@
 var toTry = document.getElementById("try");
 var id;
-var section = document.getElementsByTagName("section");
+var game = document.getElementById("game");
 var instructions = document.getElementsByClassName("instructions")
 var moveRight = 600;
 var maxRightMovement;
 var space = document.getElementById("space");
-var size = 1.0;
+var size = 25;
 var sizeIncrease = true;
 
 toTry.addEventListener("click", pantallaInicio)
@@ -19,33 +19,33 @@ function startGame(){
     console.log(window.innerWidth);
     moveRight = moveRight -10;
     maxRightMovement = -0.25 * window.innerWidth;
-    section[0].style.right = moveRight + "px";
+    game.style.right = moveRight + "px";
     if(moveRight <= maxRightMovement){
-        section[0].style.position = "normal";
-        section[0].style.right = "0px";
-        section[0].style.marginLeft = "auto";
-        section[0].style.marginRight = "auto";
+        game.style.right = "unset";
+        game.style.marginLeft = "auto";
+        game.style.marginRight = "auto";
         clearInterval(id);
         toTry.removeEventListener("click", pantallaInicio);
         for( i = 0; i < instructions.length; i++)
             instructions[i].style.display = "block";
-        id = setInterval (spaceSize, 50);
+        id = setInterval (spaceSize, 45);
         sizeIncrease = true;
         document.body.addEventListener("keydown", playGame);
+        moveRight = 600;
     }
 }
 
 function spaceSize(){
     if(sizeIncrease){
-        size += 0.05;
-        if(size > 2.0){
+        size += 1;
+        if(size > 30){
             sizeIncrease = false;
         }
     }
     if (!sizeIncrease){
-        size -= 0.05;
-        if(size < 1.5)
+        size -= 1;
+        if(size < 20)
             sizeIncrease = true;
     }
-    space.style.fontSize = size + "rem";
+    space.style.fontSize = size + "px";
 }

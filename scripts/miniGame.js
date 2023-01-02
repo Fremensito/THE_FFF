@@ -1,13 +1,11 @@
 var stepCounter = 0;
 var ticks = 0;
 var backgroundAnimation;
-var downArrow = document.getElementById("downArrow");
-var upArrow = document.getElementById("upArrow");
 
 function playGame(e){
     if(stepCounter == 0 && e.key == " "){
         clearInterval(id);
-        downArrow.innerHTML = "";
+        instructions[2].style.display = "none";
         space.innerHTML = "";
         stepCounter++;
     }
@@ -17,15 +15,17 @@ function playGame(e){
     }
     if(stepCounter == 2 && e.key == "ArrowDown"){
         clearInterval(id);
-        downArrow.innerHTML = "";
-        upArrow.innerHTML = "";
-        space.style.fontSize = "1.9rem";
-        space.style.marginTop = "220px";
+        instructions[0].style.display = "none";
+        instructions[2].style.display = "none";
+        space.style.fontSize = "25px";
         space.style.position = "relative";
         space.innerHTML = "YOU GOT A SWOOORD FIIIIIISH !!!!!!"
         stepCounter++;
         document.body.style.backgroundImage = "url('../img/swordFish.png')";
         document.body.style.backgroundSize = "80px";
+        space.style.cursor = "pointer";
+        document.body.removeEventListener("keydown", playGame);
+        space.addEventListener("click", resetGame);
         id = setInterval(winAnimation, 50);
     }
 }
@@ -42,7 +42,7 @@ function fishing (){
         case 4: 
             space.innerHTML = "Something has bitten !!!";
             stepCounter++;
-            downArrow.innerHTML = "Press DownArrow to take out the fishing rod";
+            instructions[2].style.display = "block";
             clearInterval(id);
             ticks = 0;
             id = setInterval(spaceSize, 50);
